@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f3f3f3;
+  }
+  .login-container {
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  .survey-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Agregamos una barra de desplazamiento vertical si el contenido es demasiado largo */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  input[type="text"], input[type="password"], input[type="email"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  input[type="submit"] {
+    display: block;
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+  <h1>Iniciar sesión</h1>
+  <form id="loginForm" action="#" method="post">
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+    <input type="submit" value="Iniciar sesión">
+  </form>
+</div>
+
+<div class="survey-container" id="surveyContainer" style="display: none;">
+  <h2>Electivo Pensamiento Computacional</h2> <!-- Agregamos el título antes de la encuesta -->
+  <h1>Encuesta sobre inteligencia artificial y estudios</h1>
+  <form id="surveyForm">
+    <label for="aiHelp">¿Crees que con IA puede ayudarte a tus estudios?</label>
+    <input type="text" id="aiHelp" name="aiHelp" placeholder="Escribe tu respuesta aquí" required>
+    <input type="submit" value="Enviar respuesta">
+  </form>
+</div>
+
+<button id="copyLink">Copiar enlace</button> <!-- Botón para copiar el enlace -->
+<br>
+<div id="shareLink"></div> <!-- Div para mostrar el enlace compartible -->
+
+<script>
+document.getElementById("copyLink").addEventListener("click", function() {
+  var dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.value = window.location.href;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  document.getElementById("shareLink").innerHTML = "¡Enlace copiado! Puedes pegarlo donde quieras: " + window.location.href;
+});
+</script>
+
+</body>
+</html>
