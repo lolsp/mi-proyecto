@@ -25,7 +25,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    overflow-y: auto; /* Agregamos una barra de desplazamiento vertical si el contenido es demasiado largo */
+    overflow-y: auto;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -83,7 +83,7 @@
 </div>
 
 <div class="survey-container" id="surveyContainer" style="display: none;">
-  <h2>Electivo Pensamiento Computacional</h2> <!-- Agregamos el título antes de la encuesta -->
+  <h2>Electivo Pensamiento Computacional</h2>
   <h1>Encuesta sobre inteligencia artificial y estudios</h1>
   <form id="surveyForm">
     <label for="aiHelp">¿Crees que con IA puede ayudarte a tus estudios?</label>
@@ -92,11 +92,27 @@
   </form>
 </div>
 
-<button id="copyLink">Copiar enlace</button> <!-- Botón para copiar el enlace -->
+<button id="copyLink">Copiar enlace</button>
 <br>
-<div id="shareLink"></div> <!-- Div para mostrar el enlace compartible -->
+<div id="shareLink"></div>
 
 <script>
+// Función para mostrar la encuesta
+function mostrarEncuesta() {
+  document.getElementById("surveyContainer").style.display = "block";
+}
+
+// Evento para mostrar la encuesta después de iniciar sesión
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  // Evita que el formulario se envíe
+  event.preventDefault();
+  
+  // Aquí puedes agregar tu lógica para verificar el inicio de sesión
+  // Por ejemplo, puedes verificar las credenciales del usuario y si son válidas, mostrar la encuesta
+  // En este ejemplo, simplemente llamamos a la función para mostrar la encuesta
+  mostrarEncuesta();
+});
+
 document.getElementById("copyLink").addEventListener("click", function() {
   var dummy = document.createElement("textarea");
   document.body.appendChild(dummy);
