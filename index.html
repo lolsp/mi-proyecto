@@ -99,11 +99,13 @@
 <script>
 // Función para mostrar la encuesta
 function mostrarEncuesta() {
+  console.log("Mostrando encuesta");
   document.getElementById("surveyContainer").style.display = "block";
 }
 
 // Evento para mostrar la encuesta después de iniciar sesión
 document.getElementById("loginForm").addEventListener("submit", function(event) {
+  console.log("Formulario de inicio de sesión enviado");
   // Evita que el formulario se envíe
   event.preventDefault();
   
