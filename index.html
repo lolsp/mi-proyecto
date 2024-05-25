@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar sesión</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="container" id="loginContainer">
+<div class="login-container">
   <h1>Iniciar sesión</h1>
   <form id="loginForm" action="#" method="post">
     <label for="email">Correo electrónico</label>
@@ -19,15 +19,19 @@
   </form>
 </div>
 
-<div class="container" id="surveyContainer" style="display: none;">
+<div class="survey-container" id="surveyContainer" style="display: none;">
   <h2>Electivo Pensamiento Computacional</h2>
   <h1>Encuesta sobre inteligencia artificial y estudios</h1>
-  <form id="surveyForm" action="#" method="post">
+  <form id="surveyForm">
     <label for="aiHelp">¿Crees que con IA puede ayudarte a tus estudios?</label>
     <input type="text" id="aiHelp" name="aiHelp" placeholder="Escribe tu respuesta aquí" required>
     <input type="submit" value="Enviar respuesta">
   </form>
 </div>
+
+<button id="copyLink">Copiar enlace</button>
+<br>
+<div id="shareLink"></div>
 
 <script src="script.js"></script>
 </body>
