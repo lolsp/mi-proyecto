@@ -6,8 +6,14 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
   if (usuarioValido) {
     // Mostrar el formulario de la pregunta
-    document.getElementById("loginContainer").style.display = "none";
-    document.getElementById("surveyContainer").style.display = "block";
+    var loginContainer = document.getElementById("loginContainer");
+    var surveyContainer = document.getElementById("surveyContainer");
+    if (loginContainer && surveyContainer) {
+      loginContainer.style.display = "none";
+      surveyContainer.style.display = "block";
+    } else {
+      console.error("No se encontraron los contenedores necesarios.");
+    }
   } else {
     // Mostrar un mensaje de error si las credenciales son inválidas
     alert("Credenciales de inicio de sesión inválidas");
@@ -21,7 +27,7 @@ document.getElementById("surveyForm").addEventListener("submit", function(event)
   var respuesta = document.getElementById("aiHelp").value;
 
   // Enviar la información del formulario por correo electrónico utilizando EmailJS
-  emailjs.send("service_bb0loqm", "template_b12oxil", {
+  emailjs.send("service_bb0loqm", "template_zb666tg", {
     respuesta: respuesta
   })
   .then(function(response) {
