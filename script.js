@@ -27,7 +27,7 @@ document.getElementById("surveyForm").addEventListener("submit", function(event)
   var respuesta = document.getElementById("aiHelp").value;
 
   // Enviar la información del formulario por correo electrónico utilizando EmailJS
-  emailjs.send("service_bb0loqm", "template_zb666tg", {
+  emailjs.send("service_46f6g7s", "template_fagqh97", {
     respuesta: respuesta
   })
   .then(function(response) {
